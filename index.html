@@ -5,91 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Progetto Rutilio ITS 2019</title>
-    <script type="text/javascript">
-<!--
-var loadingmessage = 'Processing...';
-function setAjax(){
-   var xmlHttp;
-   try{
-      xmlHttp=new XMLHttpRequest(); // Firefox, Opera 8.0+, Safari
-      return xmlHttp;
-   }
-   catch (e){
-      try{
-         xmlHttp=new ActiveXObject("Msxml2.XMLHTTP"); // Internet Explorer
-         return xmlHttp;
-      }
-      catch (e){
-         try{
-            xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-            return xmlHttp;
-         }
-         catch (e){
-            alert("Your browser does not support AJAX!");
-            return false;
-         }
-     }
-   }
-}
-function myAjax(f, url, myDivToChange) {
-   var poststr = getFormValues(f);
-    postData(url, poststr, myDivToChange);
-}
-function postData(url, parameters, myDivToChange2){
-   var xmlHttp = setAjax();
-   xmlHttp.onreadystatechange =  function(){
-      if(xmlHttp.readyState > 0 && xmlHttp.readyState < 4){
-          document.getElementById(myDivToChange2).innerHTML=loadingmessage;
-      }
-      if (xmlHttp.readyState == 4) {
-             // this is where the magic occcurs
-             
-          var myJsonObject = JSON.parse(xmlHttp.responseText);
-             
-             
-           //document.getElementById(myDivToChange2).innerHTML=xmlHttp.responseText+' data sent was '+parameters;
-         
-           document.getElementById(myDivToChange2).innerHTML= myJsonObject.return_value;
-         
-         
-         
-      }
-   }
-   xmlHttp.open("POST", url, true);
-   xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-   xmlHttp.send(parameters);
-}
-function getFormValues(fobj){
-   var str = "";
-   var valueArr = null;
-   var val = "";
-   var cmd = "";
-   for(var i = 0;i < fobj.elements.length;i++){
-      switch(fobj.elements[i].type){
-         case "text":
-            str += fobj.elements[i].name +"=" + escape(fobj.elements[i].value) + "&";
-            break;         
-         case "password":
-            str += fobj.elements[i].name +"=" + escape(fobj.elements[i].value) + "&";
-            break;
-         case "textarea":
-            str += fobj.elements[i].name +"=" + escape(fobj.elements[i].value) + "&";
-            break;
-         case "select-one":
-             str += fobj.elements[i].name +"=" + fobj.elements[i].options[fobj.elements[i].selectedIndex].value + "&";
-             break;
-     }
-   }
-   str = str.substr(0,(str.length - 1));
-   return str;
-}
-function sendToParticle(myIn){
-    document.all.myParameter.value = myIn
-    document.myForm.action = 'https://api.particle.io/v1/devices/' + document.all.myDeviceId.value + '/' + document.all.myFunctionName.value
-    myAjax(document.all.myCoolForm, document.myForm.action, 'myDivId')   
-    
-}
-//--></script>
 </head>
 <body> 
     <h1 id="titolo">Benvenuto in questa pagina. Qui potrai interagire con alcune funzionalità di Rotilio.</h1><br>
@@ -98,15 +13,21 @@ function sendToParticle(myIn){
         Puoi scegliere se accendere o spegnerere i led d7 e rgb con tali comandi.<br>
         Qualsiasi altro comando che non sia on o off darà errore!</h2><br>
         <hr>
+        <h2>-Attiva il NYAN!! per vedere un simpatico effetto nel led D0 con il comando on o 
+            inserisci off per tornare alla luce di base.</h2><br><hr>
     <h2>-Fai fare a Rotilio un BEEP. Puoi inserire solo numeri. Reagira' solo con numeri >0.
     </h2>
 <br>
 <hr>
 <br><br>
+<form action="https://api.particle.io/v1/devices/3a001a001447363336383438/nyan?access_token=e8a948103b6a9de8b5ab1e158fa497ff7ac1b33f" method="POST">
+    <label for="stato">Stato  </label>
+    <input id='stato' type="text" name="arg">
+    <button type="submit">NYAN!!</button></form><br><br><br>
 <form action="https://api.particle.io/v1/devices/3a001a001447363336383438/rgbLed?access_token=e8a948103b6a9de8b5ab1e158fa497ff7ac1b33f" method="POST">
     <label for="stato">Stato </label>
     <input id='stato' type="text" name="arg">
-    <button type="submit">LED RGB</button>
+    <button type="submit">LED D0</button>
 </form><br><br><br>
 <form action="https://api.particle.io/v1/devices/3a001a001447363336383438/d7?access_token=e8a948103b6a9de8b5ab1e158fa497ff7ac1b33f" method="POST">
     <label for="stato">Stato  </label>
@@ -120,7 +41,9 @@ function sendToParticle(myIn){
     <br><br><br><br>
     <hr>
     <br><br><br>
-    <h2>Pagina creata e scritta da Daniele Tagliasco</h2>
+    <author email="daniele.tagliasco.its2019@gmail.com">
+        Daniele Tagliasco
+    </author>
 </form>
 </body>
 </html>
