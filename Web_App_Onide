@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Progetto Rutilio ITS 2019</title>
+</head>
+<body> 
+    <h1 id="titolo">Benvenuto in questa pagina. Qui potrai interagire con alcune funzionalità di Rotilio.</h1><br>
+    <hr>
+    <h2>-Accendi o spegni il LED di Rotilio con i comandi on e off.<br>
+        Puoi scegliere se accendere o spegnerere i led d7 e rgb con tali comandi.<br>
+        Qualsiasi altro comando che non sia on o off darà errore!</h2><br>
+        <hr>
+    <h2>-Fai fare a Rotilio un BEEP. Puoi inserire solo numeri. Reagira' solo con numeri >0.
+    </h2>
+<br>
+<hr>
+<br><br>
+<form action="https://api.particle.io/v1/devices/3a001a001447363336383438/rgbLed?access_token=e8a948103b6a9de8b5ab1e158fa497ff7ac1b33f" method="POST">
+    <label for="stato">Stato </label>
+    <input id='stato' type="text" name="arg">
+    <button type="submit">LED RGB</button>
+</form><br><br><br>
+<form action="https://api.particle.io/v1/devices/3a001a001447363336383438/d7?access_token=e8a948103b6a9de8b5ab1e158fa497ff7ac1b33f" method="POST">
+    <label for="stato">Stato  </label>
+    <input id='stato' type="text" name="arg">
+    <button type="submit">LED D7</button>
+</form><br><br><br>
+<form action="https://api.particle.io/v1/devices/3a001a001447363336383438/setalarm?access_token=e8a948103b6a9de8b5ab1e158fa497ff7ac1b33f" method="POST">
+    <label for="stato">Stato  </label>
+    <input id='stato' type="number" name="arg">
+    <button type="submit">BEEP </button>
+    <br><br><br><br>
+    <hr>
+    <br><br><br>
+    <h2>Pagina creata e scritta da Daniele Tagliasco</h2>
+</form>
+</body>
+</html>
